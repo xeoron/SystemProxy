@@ -12,7 +12,7 @@ Mac OS X Leapard or higher
 
 To turn on a system wide SOCKS proxy you will need a "service" already running in the background to bind SOCKS too.
 
-    Here is SSH tunnel example bound to port 8080
+    Here is SSH tunnel bound to localhost directing traffic through port 8080
     ssh -2 -C foobar@tunnel.com -p 22 -N -D localhost:8080 2>/dev/null
 
 
