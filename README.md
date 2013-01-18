@@ -8,7 +8,7 @@ through it or turn off quickly turn off the SOCKS proxy, this program makes it e
 
 Requirements:
 =====
-Mac OS X Leapard or higher
+Mac OS X Leapard or higher and a AppleScript Editor
 
 To turn on a system wide SOCKS proxy you will need a "service" already running in the background to bind SOCKS too.
 
