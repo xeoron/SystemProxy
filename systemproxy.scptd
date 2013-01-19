@@ -22,15 +22,15 @@ property host : "127.0.0.1"
 property countdown : "38"
 property Title : program & ": Setup SOCKS in seconds!"
 
-on checkIP(a)
-	if a is "localhost" then
+on checkIP(address)
+	if address is "localhost" then
 		return "true"
 	end if
 	
-	set badAns to a & " is not a propper IP Address."
+	set badAns to address & " is not a propper IP Address."
 	set ASTD to AppleScript's text item delimiters
 	set AppleScript's text item delimiters to "."
-	set blocks to text items of a
+	set blocks to text items of address
 	if (count blocks) is not 4 then
 		display dialog badAns with title program & ": poorly formed address"
 		return "false"
