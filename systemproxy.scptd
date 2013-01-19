@@ -66,12 +66,12 @@ end checkIP
 
 on getIP()
 	try --get proxy address
-		set r to display dialog "Proxy Address:" default answer host default button "Ok" with title Title giving up after countdown
+		set bttnPress to display dialog "Proxy Address:" default answer host default button "Ok" with title Title giving up after countdown
 		set address to text returned of result as string
 	on error
 		return null
 	end try
-	if r is "Cancel" then
+	if bttnPress is "Cancel" then
 		return null
 	end if
 	return address
@@ -128,6 +128,6 @@ on run
 	try --change the system socks proxy settings
 		do shell script cmd
 	on error StrError
-		say "Fuck you!"
+		say "SystemProxy Error: changing the setting known as 'networksetup -setsocksfirewallproxy Ethernet'!"
 	end try
 end run
