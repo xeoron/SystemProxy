@@ -1,5 +1,8 @@
 SystemProxy
 ===========
+<img src="https://raw.github.com/xeoron/SystemProxy/master/3_simple_questions.png"/>
+
+
 With a press of a button, make switching the system-wide SOCKS-proxy settings On or Off quick and easy.
 
 
