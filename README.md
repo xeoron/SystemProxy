@@ -2,13 +2,13 @@ SystemProxy
 ===========
 <img src="https://raw.github.com/xeoron/SystemProxy/master/3_simple_questions.png"/>
 
-Three simple questions to turn on system-wide SOCKS-proxy, and one to turn off.
+Three simple questions, with fault tolerance so you system does not get screwed up, to turn on a system-wide SOCKS-proxy, and one question to turn off.
 
 Requirements:
 =====
 Mac OS X Leapard or higher and a AppleScript Editor
 
-To turn on a system wide SOCKS proxy you will need a "service" already running in the background to bind SOCKS too. Here is SSH tunnel bound to localhost directing traffic through port 8080
+To turn on a system wide SOCKS proxy you will need a "service" already running in the background to bind SOCKS too. Here is SSH tunnel example bound to localhost directing traffic through port 8080
     
     ssh -2 -C foobar@tunnel.com -p 22 -N -D localhost:8080 2>/dev/null
 
@@ -18,11 +18,17 @@ Usig the above example, the information you would use is this:
     Proxy Address: localhost or 127.0.0.1
     Port Number: 8080
 
-Once set, see if your traffic is being sent through the proxy. Since this test case is using a tunnel to a online service
+Once set, see your traffic in Safari being sent through the proxy. Since this test case is using a tunnel to a online service
 
     Google: what is my ip
 
-to see what IP Address is seen by online servers. Therefore, if you turn SOCKS off, you should then see a different result.
+to see what IP Address is seen by online servers. Therefore, if you turn SOCKS off, you should than see a different result.
+
+
+
+
+
+
 
 
 
