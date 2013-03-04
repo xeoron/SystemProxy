@@ -2,7 +2,7 @@ SystemProxy
 ===========
 <img src="https://raw.github.com/xeoron/SystemProxy/master/3_simple_questions.png"/>
 
-Three simple questions, with fault tolerance so you system does not get screwed up, to turn on a system-wide SOCKS-proxy, and one question to turn off.
+Three simple questions, with fault tolerance so your system does not get screwed up, to turn on a system-wide SOCKS-proxy, and one question to turn off.
 
 Requirements:
 =====
