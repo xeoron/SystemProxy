@@ -1,3 +1,5 @@
+#! /usr/bin/osascript
+
 (*Jason Campipsi
    name: SystemProxy
    version: v0.3
