@@ -1,20 +1,18 @@
-#! /usr/bin/osascript
-
 (*Jason Campipsi
    name: SystemProxy
-   version: v0.3
+   version: v0.4
    date: 4.28.11
    Realsed under the GPL 3
    Purpose: to make switching the system-wide socks-proxy setting On or Off quick and easy
 
   Reference: #http://peter.upfold.org.uk/blog/2008/10/10/applescript-to-enable-socks-proxy-on-mac-os-x/
-    -setsocksfirewallproxy â€“ tells networksetup to turn the proxy on, with the following settings
-  Ethernet â€“ the identifier of the network service to change the settings for (e.g. AirPort, Ethernet). 
+    -setsocksfirewallproxy Ð tells networksetup to turn the proxy on, with the following settings
+  Ethernet Ð the identifier of the network service to change the settings for (e.g. AirPort, Ethernet). 
 	Use networksetup -listallnetworkservices to see all valid values.
-	127.0.0.1 â€“ the address of the SOCKS proxy. In our case, SSH creates the proxy on the local system, so 127.0.0.1.
-	8080 â€“ the port of the SOCKS proxy. This is the -D argument in your SSH command.
-	off â€“ this is for authentication. The SSH SOCKS system doesnâ€™t need authentication and only runs on loopback, 
-		so we leave it off. If youâ€™re using a different SOCKS system, you may need this 
+	127.0.0.1 Ð the address of the SOCKS proxy. In our case, SSH creates the proxy on the local system, so 127.0.0.1.
+	8080 Ð the port of the SOCKS proxy. This is the -D argument in your SSH command.
+	off Ð this is for authentication. The SSH SOCKS system doesnÕt need authentication and only runs on loopback, 
+		so we leave it off. If youÕre using a different SOCKS system, you may need this 
 		(and also give the username and password as arguments after it).
 *)
 
@@ -46,7 +44,7 @@ on checkIP(address)
 			exit repeat
 		end try
 		
-		tell item k of blocks as number to if it â‰¥ 0 and it < 256 then --is the ip block range 0->255?
+		tell item k of blocks as number to if it ³ 0 and it < 256 then --is the ip block range 0->255?
 			set msg to "true"
 		else
 			set msg to badAns & return & return & "Block #" & k & ": " & it & " is out of range" & return & return & "Use numbers between 0 and 255"
@@ -128,7 +126,7 @@ on run
 	end if
 	
 	try --change the system socks proxy settings
-		do shell script cmd
+		do shell script cmd with administrator privileges
 	on error StrError
 		say "SystemProxy Error: changing the setting known as 'networksetup -setsocksfirewallproxy Ethernet'!"
 	end try
