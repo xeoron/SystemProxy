@@ -3,21 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.ScriptEditor.id.BBF63BC7-8B32-48E3-8E6B-39C121CB4DDB</string>
+	<string>com.apple.ScriptEditor.id.SystemProxy</string>
+	<key>CFBundleName</key>
+	<string>SystemProxy</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>WindowState</key>
 	<dict>
+		<key>bundleDividerCollapsed</key>
+		<true/>
+		<key>bundlePositionOfDivider</key>
+		<real>0.0</real>
 		<key>dividerCollapsed</key>
 		<false/>
 		<key>eventLogLevel</key>
-		<integer>-1</integer>
+		<integer>2</integer>
 		<key>name</key>
 		<string>ScriptWindowState</string>
 		<key>positionOfDivider</key>
-		<real>333</real>
+		<real>689</real>
 		<key>savedFrame</key>
-		<string>173 346 953 597 0 0 1920 1058 </string>
-		<key>selectedTabView</key>
-		<string>event log</string>
+		<string>187 100 1604 940 0 0 1920 1057 </string>
+		<key>selectedTab</key>
+		<string>result</string>
 	</dict>
 </dict>
 </plist>

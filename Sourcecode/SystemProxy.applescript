@@ -1,7 +1,7 @@
 (*Jason Campipsi
    name: SystemProxy
-   version: v0.4
-   date: 4.28.11
+   version: v0.5
+   date: 5.14.17
    Realsed under the GPL 3
    Purpose: to make switching the system-wide socks-proxy setting On or Off quick and easy
 
@@ -17,8 +17,8 @@
 *)
 
 property program : "SystemProxy"
-property port : "8080"
-property host : "127.0.0.1"
+property portN : "8080"
+property Lhost : "127.0.0.1"
 property countdown : "38"
 property Title : program & ": Setup SOCKS in seconds!"
 
@@ -66,12 +66,14 @@ end checkIP
 
 on getIP()
 	try --get proxy address
-		set bttnPress to display dialog "Proxy Address:" default answer host default button "Ok" with title Title giving up after countdown
+		set bttnPress to display dialog "Proxy Address:" default answer Lhost with title Title giving up after countdown
 		set address to text returned of result as string
 	on error
+		--display dialog "getIP null^0 Error try failed"
 		return null
 	end try
 	if bttnPress is "Cancel" then
+		--display dialog "getIP null^1 ButtonPress Cancel"
 		return null
 	end if
 	return address
@@ -87,26 +89,31 @@ on run
 	end try
 	
 	if r is "Cancel" then --exit?
+		--display dialog "Cancel run exit "
 		return
 	else if r is "On" then -- turn the proxy on?
-		repeat --get the hostname
-			set hostName to getIP()
-			--display dialog "hostname is this: " & hostName with title Title
-			if hostName is null then
+		repeat --get the HOSTname
+			set HOSTName to getIP()
+			--display dialog "hostname is this: " & HOSTName with title Title
+			if HOSTName is null then
+				--display dialog "Null HOSTName"
 				return -- cancel was selected, quit
 			end if
 			
-			set r to checkIP(hostName) --is ip address in a valid form?
+			set r to checkIP(HOSTName) --is ip address in a valid form?
+			--display dialog "checkIP result is this: " & r
 			if r is null then
+				--display dialog "checkIP returned Null exit "
 				return -- cancel was selected, quit
 			else if r is "true" then
+				--display dialog "checkIP result is true"
 				exit repeat
 			end if
 		end repeat
 		
 		repeat --get port to bind the service too
 			try
-				set r to display dialog "Please enter a port number:" default answer port default button "Ok" with title Title giving up after countdown
+				set r to display dialog "Please enter a port number:" default answer portN with title Title giving up after countdown
 				set portNumber to round (text returned of result as number) --the port must be a whole number
 				if portNumber > 0 then --valid port # must be 1 or higher
 					exit repeat
@@ -115,14 +122,15 @@ on run
 				try
 					display dialog "This is not a number: " & text returned of result with title program & " Error: positive number must be given"
 				on error StrError
-					return
+					error number -128 --User Cancelled"
 				end try
 			end try
 		end repeat
 		if r is "Cancel" then --exit?
+			display dialog "Time to leave"
 			return
 		end if
-		set cmd to "networksetup -setsocksfirewallproxy Ethernet" & space & hostName & space & portNumber & space & "off"
+		set cmd to "networksetup -setsocksfirewallproxy Ethernet" & space & HOSTName & space & portNumber & space & "off"
 	end if
 	
 	try --change the system socks proxy settings

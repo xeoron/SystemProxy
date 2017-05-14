@@ -6,7 +6,7 @@ Three simple questions, with fault tolerance so your system does not get screwed
 
 Requirements:
 =====
-Mac OS X Leapard or higher and a AppleScript Editor
+Runs on Mac OS X Leapard or higher
 
 To turn on a system wide SOCKS proxy you will need a "service" already running in the background to bind SOCKS too. Here is SSH tunnel example bound to localhost directing traffic through port 8080
     
